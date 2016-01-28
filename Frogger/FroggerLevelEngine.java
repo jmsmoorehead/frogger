@@ -86,7 +86,7 @@ public class FroggerLevelEngine
 		if(state == FroggerState.HIT)
 		{
 			g.setColor(Color.BLACK);
-			g.drawString("YOU GOT HIT", WIDTH/2-50, HEIGHT/2);
+			g.drawString("YOU GOT HIT! Hit the spacebar to restart.", WIDTH/2-50, HEIGHT/2);
 		}
 	}
 }
