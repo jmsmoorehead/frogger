@@ -5,6 +5,5 @@ public class MainClass {
 	{
 		DrawingClass drw = new DrawingClass();
 		drw.setAll();
-
 	}
 }

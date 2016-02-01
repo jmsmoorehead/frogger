@@ -19,10 +19,9 @@ public class DrawingClass extends JFrame{
 	public DrawingClass()
 	{
 		super("MineR");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new GridLayout(11,7));
 	    setBackground(Color.WHITE);
-		setVisible(true);
+		setVisible(false);
 		setResizable(false);
 	}
 	
