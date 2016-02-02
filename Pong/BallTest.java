@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 
 public class BallTest
 {
-
     @Test
     public void testGetLocation() throws Exception
     {
