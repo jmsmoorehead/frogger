@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Games.iml" filepath="$PROJECT_DIR$/Games.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GamesSuite.iml" filepath="$PROJECT_DIR$/GamesSuite.iml" />
       <module fileurl="file://$PROJECT_DIR$/MineR-master/MineR-master.iml" filepath="$PROJECT_DIR$/MineR-master/MineR-master.iml" />
     </modules>
   </component>
