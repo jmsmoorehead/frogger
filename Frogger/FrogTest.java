@@ -9,8 +9,8 @@ import java.awt.*;
 public class FrogTest {
     @Test
     public void testGetBounds(){
-        Frog f = new Frog(125, 125, new Rectangle(120, 120, 10, 10));
+        Frog f = new Frog(125, 125, new Rectangle(113, 113, 24, 24));
         Rectangle b = f.getBounds();
-        assertEquals(new Rectangle(120, 120, 10, 10), b);
+        assertEquals(new Rectangle(113, 113, 24, 24), b);
     }
 }
