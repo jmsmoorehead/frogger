@@ -3,12 +3,12 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class FroggerLevelTest{
-	public static void main(String[] args){
+	public void main(String[] args){
 		testFroggerLevel();
 	}
 	
 	@Test
-	public static void testFroggerLevel(){
+	public void testFroggerLevel(){
 		// set up some simple arrays with which to test
 		int[] speed = new int[1];
 		String[] pattern = new String[1];
