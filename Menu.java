@@ -144,7 +144,7 @@ public class Menu extends JFrame
             {
                 panel3.removeAll();
                 panel3.add(new FroggerComponent());
-                panel3.setPreferredSize(new Dimension(250, 250));
+                panel3.setPreferredSize(new Dimension(550, 350));
                 pack();
                 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 setVisible(true);
