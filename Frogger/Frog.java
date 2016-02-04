@@ -2,7 +2,7 @@ import java.awt.*;
 
 public class Frog
 {
-	public static final int RADIUS = 5;
+	public static final int RADIUS = 12;
 	public static final Color COLOR = new Color(0,128,0);
 	public static final int SPEED = 4;
 

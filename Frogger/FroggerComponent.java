@@ -15,7 +15,7 @@ public class FroggerComponent extends JComponent implements KeyListener, Runnabl
 		super();
 		levelInit();
 		engine = new FroggerLevelEngine(levels.get(level));
- 		setPreferredSize(new Dimension(engine.WIDTH, engine.HEIGHT));
+ 		setPreferredSize(new Dimension(engine.WIDTH,engine.HEIGHT));
 
  		addKeyListener(this);
  		Thread run = new Thread(this);
