@@ -28,7 +28,7 @@ public class FroggerComponent extends JComponent implements KeyListener, Runnabl
 	// in this example a level is generated with four rows of traffic with speeds 2, 1, 1, and 2
 	public void levelInit()
 	{
-		levels.add(new FroggerLevel(new int[]{1,1,1}));
+		levels.add(new FroggerLevel(new int[]{2,2,2}));
 
 		levels.add(new FroggerLevel(new int[]{2,1,2,1,2}));
 

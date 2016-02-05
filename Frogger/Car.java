@@ -19,9 +19,10 @@ public class Car extends Rectangle
 	
 	public static int getYCoordForRow(int row)
 	{
-		final int TOP_ROW = 30; // y coord for uppermost row
-		final int VERTICAL_PADDING = 80; // space between rows
-		return TOP_ROW + Car.HEIGHT + (VERTICAL_PADDING * row);
+		final int TOP_ROW = 0; // y coord for uppermost row
+		final int VERTICAL_PADDING = 35; // space between rows
+		
+		return TOP_ROW + (VERTICAL_PADDING * row);
 	}
 	
 	public int getRow()
