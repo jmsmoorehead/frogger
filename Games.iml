@@ -6,6 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Frogger" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pong" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/JUnit" isTestSource="true" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
