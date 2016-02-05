@@ -21,43 +21,24 @@ public class FroggerComponent extends JComponent implements KeyListener, Runnabl
  		Thread run = new Thread(this);
  		run.start();
 	}
-
+	
+	// the number of ints in the array you pass to level.add will be the number of rows in the level
+	// example:
+	// new FroggerLevel(new int[]{2,1,1,2})
+	// in this example a level is generated with four rows of traffic with speeds 2, 1, 1, and 2
 	public void levelInit()
 	{
-		levels.add(new FroggerLevel(
-			new int[]{1,1,1},
-			new String[]{"LLL       LLL       ", "RRRR     RRRR     RRRR     ",
-				"RR  BB     LL  MM     "}));
+		levels.add(new FroggerLevel(new int[]{1,1,1}));
 
-		levels.add(new FroggerLevel(
-			new int[]{2,1,2,1,2},
-			new String[]{"RR         L  ", "BB  LL  RR     ", "    RR    MM     ",
-				"MMM     MMM     ", "RR      L     "}));
+		levels.add(new FroggerLevel(new int[]{2,1,2,1,2}));
 
-		levels.add(new FroggerLevel(
-			new int[]{1,1,1,1,1,1,1},
-			new String[]{"RR     RR     RR     ", "B   B   B   B   B   ",
-				"MMM   MMM     MMM    ", "RR     RR     RR     ",
-				"B   B   B   B   B   B   ", "MMM   MMM     MMM    L ",
-				"   BBB    BBB L    BBB"}));
+		levels.add(new FroggerLevel(new int[]{1,1,1,1,1,1,1}));
 
-		levels.add(new FroggerLevel(
-			new int[]{1,1,2,2,3,2,1},
-			new String[]{"RR     LL     B   ", "LLL      BB   R    ",
-				"RRR      LL        ", "MMM        MM    ", "L          L      ",
-				"RR     L      M     ", "RRR    BL       "}));
+		levels.add(new FroggerLevel(new int[]{1,1,2,2,3,2,1}));
 
-		levels.add(new FroggerLevel(
-			new int[]{1,2,3,4,5},
-			new String[]{"BB  L    RRR    M", "RR B  MMM     L    ",
-				"MM     LL     BB     ", "M      L      BB      ",
-				"LL            "}));
+		levels.add(new FroggerLevel(new int[]{1,2,3,4,5}));
 
-		levels.add(new FroggerLevel(
-			new int[]{1,3,4,3,1,2,3,4,5},
-			new String[]{"MMM   LL     RR      ", "BBB       LL    RR    ",
-			"BB        LL         ", "BBB       MM    MM   ", "MMM  LL  B    R  L B ",
-			"MM  RR  LL  BB  LL  ", "BBB     LL  MMMM    ", "L    L     LLL     "}));
+		levels.add(new FroggerLevel(new int[]{1,3,4,3,1,2,3,4,5}));
 	}
 
 	public void run()

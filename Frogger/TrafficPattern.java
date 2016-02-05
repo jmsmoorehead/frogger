@@ -1,4 +1,4 @@
-import java.awt.*;
+/*import java.awt.*;
 import java.util.*;
 
 public class TrafficPattern
@@ -132,4 +132,4 @@ public class TrafficPattern
 		moveCars();
 		testForNewCar();
 	}
-}
+}*/

@@ -5,23 +5,16 @@ public class FroggerLevelEngine
 	public static final int WIDTH = 550;
 	public static final int HEIGHT = 350;
 
-	private TrafficPattern[] traffic;
+	//private TrafficPattern[] traffic;
 	private Frog frog;
 	private FroggerState state = FroggerState.MOVING;
-
-	public FroggerLevelEngine(int[] speeds, String[] patterns)
-	{
-		traffic = new TrafficPattern[patterns.length];
-		for(int i = 0; i < patterns.length; i++)
-		{
-			traffic[i] = new TrafficPattern(speeds[i], patterns[i], (i%2==0), getBounds(), (i+1)*(Car.HEIGHT+2));
-		}
-		frog = new Frog(WIDTH/2, HEIGHT-Frog.RADIUS, getBounds());
-	}
+	private FroggerLevel level;
 
 	public FroggerLevelEngine(FroggerLevel level)
 	{
-		this(level.getSpeeds(), level.getPatterns());
+		frog = new Frog(WIDTH/2, HEIGHT-Frog.RADIUS, getBounds());
+		this.level = level;
+		level.initCars(); // generate intial cars for this level
 	}
 
 	public Rectangle getBounds()
@@ -31,12 +24,14 @@ public class FroggerLevelEngine
 
 	public void update()
 	{
-		for(int i = 0; i < traffic.length; i++)
+		/*for(int i = 0; i < traffic.length; i++)
 		{
 			traffic[i].update();
 			if(traffic[i].intersects(frog))
 				state = FroggerState.HIT;
-		}
+		}*/
+		
+		this.level.updateCars();
 		if(getWinBounds().contains(frog.getBounds()))
 			state = FroggerState.WON;
 	}
@@ -78,10 +73,12 @@ public class FroggerLevelEngine
 	public void draw(Graphics g)
 	{
 		frog.draw(g);
-		for(int i = 0; i < traffic.length; i++)
+		/*for(int i = 0; i < traffic.length; i++)
 		{
 			traffic[i].draw(g);
-		}
+		}*/
+		
+		this.level.drawCars(g);
 
 		if(state == FroggerState.HIT)
 		{
