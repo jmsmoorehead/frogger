@@ -67,6 +67,7 @@ public class FroggerLevel implements java.io.Serializable
 	}
 	
 	// moves cars along the screen and generates new cars at random
+	// also deletes cars if they slide offscreen
 	public void updateCars(FroggerLevelEngine engine,Frog frog)
 	{
 		for(int car = 0; car < this.carVector.size(); ++car)
@@ -82,7 +83,29 @@ public class FroggerLevel implements java.io.Serializable
 				this.carVector.add(car,currentCar.moveRight());
 				this.carVector.remove(car + 1);
 			}
-			if(frog.getBounds().intersects(currentCar.getBounds())){
+			
+			// remove car if it slid offscreen
+			if(this.isRowMovingLeft(currentCar.getRow()))
+			{
+				Rectangle rect = currentCar.getBounds();
+				if(rect.x + rect.width < 0){
+					this.carVector.remove(car);
+					--car;
+					continue;
+				}
+			}
+			else
+			{
+				Rectangle rect = currentCar.getBounds();
+				if(rect.x > FroggerLevelEngine.WIDTH){
+					this.carVector.remove(car);
+					--car;
+					continue;
+				}
+			}
+			
+			if(frog.getBounds().intersects(currentCar.getBounds()))
+			{
 				engine.setState(FroggerState.HIT);
 			}
 		}
