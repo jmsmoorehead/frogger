@@ -49,7 +49,7 @@ public class FroggerLevel implements java.io.Serializable
 	}
 	
 	// called by FroggerLevelEngine at the start of each level
-	public void initCars()
+	public void initCars(FroggerLevelEngine engine, Frog frog)
 	{
 		// now this right here is very important
 		// it 'updates' the cars a bunch of times at the start of the level
@@ -57,7 +57,7 @@ public class FroggerLevel implements java.io.Serializable
 		// then the player could just shoot up the middle really fast
 		for(int i = 0; i < 230; ++i)
 		{
-			this.updateCars();
+			this.updateCars(engine,frog);
 		}
 	}
 	
@@ -67,7 +67,7 @@ public class FroggerLevel implements java.io.Serializable
 	}
 	
 	// moves cars along the screen and generates new cars at random
-	public void updateCars()
+	public void updateCars(FroggerLevelEngine engine,Frog frog)
 	{
 		for(int car = 0; car < this.carVector.size(); ++car)
 		{
@@ -82,32 +82,37 @@ public class FroggerLevel implements java.io.Serializable
 				this.carVector.add(car,currentCar.moveRight());
 				this.carVector.remove(car + 1);
 			}
+			if(frog.getBounds().intersects(currentCar.getBounds())){
+				engine.setState(FroggerState.HIT);
+			}
 		}
 		
 		
 		// this chunk o code might generate a new car
-		// first a potential car is generated, then a
+		// first a potential car is generated (on a random row), then a
 		// test rectangle is created based on the car --
 		// but the test rectangle is wider than the car.
 		// then the test rectangle is checked against all
 		// of the other cars, and if there are no
 		// intersections (collisions), then the new car
 		// is added to the vector
-		int row = this.rand.nextInt(this.rowCount);
+		int row = this.rand.nextInt(this.rowCount); // choose a random row
 		int xCoord;
+		int width = Car.MIN_WIDTH + this.rand.nextInt(200); // randomly generated width for potential car
 		
 		if(this.isRowMovingLeft(row))
 		{
-			xCoord = FroggerLevelEngine.WIDTH + this.rand.nextInt(200); // set to right edge of screen
+			xCoord = FroggerLevelEngine.WIDTH + this.rand.nextInt(200); // set to right-ish edge of screen
 		} else {
-				xCoord = -Car.WIDTH - this.rand.nextInt(200);
+				xCoord = -width - this.rand.nextInt(200);
 		}
 		
-		Car potentialCar = new Car(xCoord,Car.getYCoordForRow(row),row,this.speeds[row],this.colors[row]);
-		int xPadding = 150+this.rand.nextInt(130); // between 150 and (150+130)
+		Car potentialCar = new Car(xCoord,Car.getYCoordForRow(row),width,row,this.speeds[row],this.colors[row]);
+		int xPadding = 200+this.rand.nextInt(180); // between 200 and (200+180)
 		
-		Rectangle testRect = new Rectangle(potentialCar.getBounds().x - (xPadding / 2), potentialCar.getBounds().y,
-		potentialCar.getBounds().width + xPadding, potentialCar.getBounds().height);
+		Rectangle potentialCarRect = potentialCar.getBounds();
+		Rectangle testRect = new Rectangle(potentialCarRect.x - (xPadding / 2), potentialCarRect.y,
+		potentialCarRect.width + xPadding, potentialCarRect.height);
 		
 		boolean fail = false;
 		for(int car = 0; car < this.carVector.size(); ++car)
