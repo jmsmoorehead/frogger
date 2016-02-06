@@ -13,7 +13,7 @@ public class FroggerLevel implements java.io.Serializable
 
 	public FroggerLevel(int[] speeds)
 	{
-		this.rand = new Random();
+		this.rand = new Random(System.currentTimeMillis());
 		this.speeds = speeds;
 		this.rowCount = speeds.length; // number of rows of traffic
 		this.carVector = new Vector<Car>(); // this is where cars that are currently on the screen are stored
@@ -55,7 +55,7 @@ public class FroggerLevel implements java.io.Serializable
 		// it 'updates' the cars a bunch of times at the start of the level
 		// without this, all of the cars would start at the edge of the screen (where they are generated)
 		// then the player could just shoot up the middle really fast
-		for(int i = 0; i < 230; ++i)
+		for(int i = 0; i < 400; ++i)
 		{
 			this.updateCars(engine,frog);
 		}
@@ -73,7 +73,7 @@ public class FroggerLevel implements java.io.Serializable
 		for(int car = 0; car < this.carVector.size(); ++car)
 		{
 			
-			// this chuck o code moves cars along the screen
+			// this chunk o code moves cars along the screen
 			Car currentCar = this.carVector.get(car);
 			if(this.isRowMovingLeft(currentCar.getRow()))
 			{
@@ -104,6 +104,7 @@ public class FroggerLevel implements java.io.Serializable
 				}
 			}
 			
+			// get hit
 			if(frog.getBounds().intersects(currentCar.getBounds()))
 			{
 				engine.setState(FroggerState.HIT);
@@ -118,7 +119,7 @@ public class FroggerLevel implements java.io.Serializable
 		// then the test rectangle is checked against all
 		// of the other cars, and if there are no
 		// intersections (collisions), then the new car
-		// is added to the vector
+		// is added to the vector, otherwise the new car is dropped (canceled)
 		int row = this.rand.nextInt(this.rowCount); // choose a random row
 		int xCoord;
 		int width = Car.MIN_WIDTH + this.rand.nextInt(200); // randomly generated width for potential car
@@ -134,6 +135,8 @@ public class FroggerLevel implements java.io.Serializable
 		int xPadding = 200+this.rand.nextInt(180); // between 200 and (200+180)
 		
 		Rectangle potentialCarRect = potentialCar.getBounds();
+		// the purpose of the test rect being wider than the car it represents is so the cars
+		// don't get generated too close to each other
 		Rectangle testRect = new Rectangle(potentialCarRect.x - (xPadding / 2), potentialCarRect.y,
 		potentialCarRect.width + xPadding, potentialCarRect.height);
 		
@@ -155,10 +158,5 @@ public class FroggerLevel implements java.io.Serializable
 		{
 			this.carVector.get(car).draw(g);
 		}
-	}
-	
-	public int[] getSpeeds()
-	{
-		return speeds;
 	}
 }
