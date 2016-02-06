@@ -13,7 +13,7 @@ public class FroggerLevel implements java.io.Serializable
 
 	public FroggerLevel(int[] speeds)
 	{
-		this.rand = new Random(System.currentTimeMillis());
+		this.rand = new Random();//System.currentTimeMillis());
 		this.speeds = speeds;
 		this.rowCount = speeds.length; // number of rows of traffic
 		this.carVector = new Vector<Car>(); // this is where cars that are currently on the screen are stored
