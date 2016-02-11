@@ -11,8 +11,8 @@ public class CarTest {
     @Test
     public void testMoveRight()
     {
-        Car car = new Car(2,2,4,Color.BLACK);
+        Car car = new Car(2,2,4,1, 1,Color.BLACK);
         Car newCar = car.moveRight();
-        assertEquals(new Car(6,2,4,Color.BLACK),newCar);
+        assertEquals(new Car(6,2,4,1, 1, Color.BLACK),newCar);
     }
 }

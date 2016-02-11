@@ -13,8 +13,8 @@ public class trafficPatternTest {
 
 	 @Test
 	 public void testaddCar(){
-		 Car car = new Car(2,4,5,Color.MAGENTA);
-		 equals(new Car((left?(int)bounds.getWidth():0), y, speed, Color.MAGENTA));
+	//	 Car car = new Car(2,4,5,Color.MAGENTA);
+	//	 equals(new Car((left?(int)bounds.getWidth():0), y, speed, Color.MAGENTA));
 	 }
 
 }
