@@ -1,5 +1,6 @@
 import java.awt.*;
 import static org.junit.Assert.*;
+
 import org.junit.Test;
 
 public class FroggerLevelTest{
