@@ -19,8 +19,11 @@ public class DrawingClassTest {
         robot.mouseMove(30, 50);
         robot.mousePress(InputEvent.BUTTON3_MASK);
         robot.mouseRelease(InputEvent.BUTTON3_MASK);
+        robot.mouseMove(80, 0);
+        robot.mousePress(InputEvent.BUTTON1_MASK);
+        robot.mouseRelease(InputEvent.BUTTON1_MASK);
 
-        try { Thread.sleep(2000); } catch(InterruptedException ex) { Thread.currentThread().interrupt(); }
+        try { Thread.sleep(900); } catch(InterruptedException ex) { Thread.currentThread().interrupt(); }
 
         JButton b[] = drw.getClicks();
         assertEquals(false, b[0].isEnabled());
@@ -35,8 +38,11 @@ public class DrawingClassTest {
         robot.mouseMove(30, 50);
         robot.mousePress(InputEvent.BUTTON3_MASK);
         robot.mouseRelease(InputEvent.BUTTON3_MASK);
+        robot.mouseMove(80, 0);
+        robot.mousePress(InputEvent.BUTTON1_MASK);
+        robot.mouseRelease(InputEvent.BUTTON1_MASK);
 
-        try { Thread.sleep(2000); } catch(InterruptedException ex) { Thread.currentThread().interrupt(); }
+        try { Thread.sleep(900); } catch(InterruptedException ex) { Thread.currentThread().interrupt(); }
 
         JButton b[] = drw.getClicks();
         assertEquals(Color.GREEN, b[0].getBackground());
