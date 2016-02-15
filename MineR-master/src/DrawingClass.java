@@ -16,6 +16,12 @@ public class DrawingClass extends JFrame{
 	private int add[] = {-11,-10,-9,-1,1,9,10,11};
 	private int total = 0;
 	private Boolean Checked[] = new Boolean[100];
+
+	public JButton[] getClicks()
+	{
+		return Clicks;
+	}
+
 	public DrawingClass()
 	{
 		super("MineR");
@@ -101,7 +107,6 @@ public class DrawingClass extends JFrame{
 			Clicks[j].addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					//super.mouseClicked(e);
 					if(e.getButton() == 3)
 					{
 						toggleFlag(j);
