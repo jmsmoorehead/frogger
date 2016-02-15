@@ -16,6 +16,12 @@ public class DrawingClass extends JFrame{
 	private JLabel JL = new JLabel();
 	private int Checks[] = new int[100],clk=0,add[] = {-11,-10,-9,-1,1,9,10,11},total=0;
 	private Boolean Checked[] = new Boolean[100];
+	
+	public JButton[] getClicks()
+	{
+		return Clicks;
+	}
+	
 	public DrawingClass()
 	{
 		super("MineR");
