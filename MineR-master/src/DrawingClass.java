@@ -1,8 +1,5 @@
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
+import java.awt.event.*;
 import java.util.Random;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,7 +11,10 @@ public class DrawingClass extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private JButton Clicks[] = new JButton[100];
 	private JLabel JL = new JLabel();
-	private int Checks[] = new int[100],clk=0,add[] = {-11,-10,-9,-1,1,9,10,11},total=0;
+	private int Checks[] = new int[100];
+	private int clk = 0;
+	private int add[] = {-11,-10,-9,-1,1,9,10,11};
+	private int total = 0;
 	private Boolean Checked[] = new Boolean[100];
 	public DrawingClass()
 	{
@@ -60,6 +60,21 @@ public class DrawingClass extends JFrame{
 			}
 		
 	}
+
+	public void toggleFlag(int index)
+	{
+		Color defaultColor = new JButton().getBackground();
+		if(Clicks[index].isEnabled())
+		{
+			Clicks[index].setBackground(Color.GREEN);
+			Clicks[index].setEnabled(false);
+		}
+		else if (Clicks[index].getBackground() == Color.GREEN)
+		{
+			Clicks[index].setBackground(new JButton().getBackground());
+			Clicks[index].setEnabled(true);
+		}
+	}
 	
 	public void setAll()
 	{
@@ -81,6 +96,19 @@ public class DrawingClass extends JFrame{
 			Clicks[i].addActionListener(new HandlerClass());
 			Checked[i] = false;
 			super.add(Clicks[i]);
+
+			int j = i;
+			Clicks[j].addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					//super.mouseClicked(e);
+					if(e.getButton() == 3)
+					{
+						toggleFlag(j);
+					}
+				}
+			});
+
 	    }
 		add(JL);
 		super.setSize(600,600);
@@ -145,7 +173,8 @@ public class DrawingClass extends JFrame{
 				 }
 			     paint();
 			}
-		} 
+		}
+
 		private void zeroBonus(int pos)
 		{
 			for(int i=0;i<8;i++)
