@@ -2,17 +2,14 @@ import java.util.Vector;
 import java.util.Random;
 import java.awt.*;
 
-public class FroggerLevel implements java.io.Serializable
-{
-
+public class FroggerLevel implements java.io.Serializable {
 	private int[] speeds;
 	private int rowCount;
 	private Vector<Car> carVector; //stores all the cars
 	private Color[] colors; // colors for each row
 	private Random rand; // rng for adding new cars
 
-	public FroggerLevel(int[] speeds)
-	{
+	public FroggerLevel(int[] speeds) {
 		this.rand = new Random();//System.currentTimeMillis());
 		this.speeds = speeds;
 		this.rowCount = speeds.length; // number of rows of traffic
@@ -21,8 +18,7 @@ public class FroggerLevel implements java.io.Serializable
 		this.initColors();
 	}
 	
-	private void initColors()
-	{
+	private void initColors(){
 		for(int i = 0; i < this.rowCount; ++i){
 			int c = rand.nextInt(6); // 6 possible colors
 			switch (c){
@@ -49,34 +45,28 @@ public class FroggerLevel implements java.io.Serializable
 	}
 	
 	// called by FroggerLevelEngine at the start of each level
-	public void initCars(FroggerLevelEngine engine, Frog frog)
-	{
+	public void initCars(FroggerLevelEngine engine, Frog frog){
 		// now this right here is very important
 		// it 'updates' the cars a bunch of times at the start of the level
 		// without this, all of the cars would start at the edge of the screen (where they are generated)
 		// then the player could just shoot up the middle really fast
-		for(int i = 0; i < 400; ++i)
-		{
+		for(int i = 0; i < 400; ++i){
 			this.updateCars(engine,frog);
 		}
 	}
 	
-	private boolean isRowMovingLeft(int row)
-	{
+	private boolean isRowMovingLeft(int row){
 		return (row % 2) == 0;
 	}
 	
 	// moves cars along the screen and generates new cars at random
 	// also deletes cars if they slide offscreen
-	public void updateCars(FroggerLevelEngine engine,Frog frog)
-	{
-		for(int car = 0; car < this.carVector.size(); ++car)
-		{
+	public void updateCars(FroggerLevelEngine engine,Frog frog){
+		for(int car = 0; car < this.carVector.size(); ++car) {
 			
 			// this chunk o code moves cars along the screen
 			Car currentCar = this.carVector.get(car);
-			if(this.isRowMovingLeft(currentCar.getRow()))
-			{
+			if(this.isRowMovingLeft(currentCar.getRow())) {
 				this.carVector.add(car,currentCar.moveLeft());
 				this.carVector.remove(car + 1);
 			} else {
@@ -85,8 +75,7 @@ public class FroggerLevel implements java.io.Serializable
 			}
 			
 			// remove car if it slid offscreen
-			if(this.isRowMovingLeft(currentCar.getRow()))
-			{
+			if(this.isRowMovingLeft(currentCar.getRow())) {
 				Rectangle rect = currentCar.getBounds();
 				if(rect.x + rect.width < 0){
 					this.carVector.remove(car);
@@ -94,8 +83,7 @@ public class FroggerLevel implements java.io.Serializable
 					continue;
 				}
 			}
-			else
-			{
+			else {
 				Rectangle rect = currentCar.getBounds();
 				if(rect.x > FroggerLevelEngine.WIDTH){
 					this.carVector.remove(car);
@@ -105,8 +93,7 @@ public class FroggerLevel implements java.io.Serializable
 			}
 			
 			// get hit
-			if(frog.getBounds().intersects(currentCar.getBounds()))
-			{
+			if(frog.getBounds().intersects(currentCar.getBounds())) {
 				engine.setState(FroggerState.HIT);
 			}
 		}
