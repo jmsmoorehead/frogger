@@ -20,8 +20,8 @@ public class ballCollisionTest{
         over. The effect of this is a sort of bouncing glitch where the ball appears to be 'stuck'
         inside the paddle until it eventually breaks free.
          */
-        ball.bounceSide();
+        ball.bounceSide(paddle);
 
-        assertEquals(false,paddle.contains(ball)); // this will fail
+        assertEquals(false,paddle.contains(ball)); // this will pass now
     }
 }
