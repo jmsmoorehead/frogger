@@ -120,7 +120,6 @@ public class Menu extends JFrame
         setResizable(false);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        System.out.println("TEST");
 
         //------------------
         //      Listeners
