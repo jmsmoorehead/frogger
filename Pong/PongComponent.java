@@ -13,7 +13,7 @@ public class PongComponent extends JComponent implements KeyListener, Runnable
 		super();
 		environment = new PongEnvironment();
 		environment.setComputer(false, true);
- 		setPreferredSize(new Dimension(environment.WIDTH, environment.HEIGHT));
+ 		setPreferredSize(new Dimension(PongEnvironment.WIDTH, PongEnvironment.HEIGHT));
 
  		addKeyListener(this);
  		Thread run = new Thread(this);
@@ -30,6 +30,7 @@ public class PongComponent extends JComponent implements KeyListener, Runnable
 			}
 			catch(Exception ex)
 			{
+				ex.printStackTrace();
 			}
 			requestFocus();
 			update();
