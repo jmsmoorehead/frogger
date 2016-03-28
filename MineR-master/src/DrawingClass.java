@@ -35,11 +35,11 @@ public class DrawingClass extends JFrame{
 	{
 		for (int i=0;i<100;i++)
 		{
-			if (Checks[i]==9 && Checked[i].booleanValue()==true)
+			if (Checks[i]==9 && Checked[i].booleanValue())
 			{
 				Clicks[i].setText("*");
 			}
-			else if(Checks[i]>=0 && Checks[i]<=8 && Checked[i].booleanValue()==true)
+			else if(Checks[i]>=0 && Checks[i]<=8 && Checked[i].booleanValue())
 			{
 				Clicks[i].setText(String.valueOf(Checks[i]));
 			}
@@ -52,7 +52,7 @@ public class DrawingClass extends JFrame{
 			for(int i=0;i<100;i++)
 			{
 				
-				if((Checks[i]>=0 && Checks[i]<=8) && Checked[i].booleanValue()==true)
+				if((Checks[i]>=0 && Checks[i]<=8) && Checked[i].booleanValue())
 				{
 					Count++;
 				}
@@ -157,7 +157,7 @@ public class DrawingClass extends JFrame{
 			{
 				try{
 				Checks[pos+add[i]]=Calculate(pos+add[i]);
-				if(Checks[pos+add[i]]==0 && Checked[pos+add[i]]==false)
+				if(Checks[pos+add[i]]==0 && !Checked[pos+add[i]])
 				{
 					Clicks[pos+add[i]].setEnabled(false);
 					Checked[pos+add[i]]=true;
