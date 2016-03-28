@@ -110,7 +110,7 @@ public class TrafficPattern
 	{
 		for(int i = 0; i < cars.size(); i++)
 		{
-			if((cars.get(i) != null) && !cars.get(i).empty() && cars.get(i).intersects(f.getBounds()))
+			if(cars.get(i) != null && !cars.get(i).empty() && cars.get(i).intersects(f.getBounds()))
 				return true;
 		}
 		return false;

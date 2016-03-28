@@ -39,7 +39,7 @@ public class DrawingClass extends JFrame{
 			{
 				Clicks[i].setText("*");
 			}
-			else if((Checks[i]>=0 && Checks[i]<=8) && Checked[i].booleanValue()==true)
+			else if(Checks[i]>=0 && Checks[i]<=8 && Checked[i].booleanValue()==true)
 			{
 				Clicks[i].setText(String.valueOf(Checks[i]));
 			}

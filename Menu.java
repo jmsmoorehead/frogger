@@ -39,7 +39,7 @@ public class Menu extends JFrame
         backgroundPanel.add(panel2, BorderLayout.WEST);
 
         //Game Display
-        JPanel panel3 = new JPanel();
+        final JPanel panel3 = new JPanel();
         panel3.setLayout(new BorderLayout());
         panel3.setBackground(Color.GRAY);
         panel3.setBorder(new LineBorder(Color.black, 2));
