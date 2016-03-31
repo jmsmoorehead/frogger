@@ -3,10 +3,14 @@ import javax.swing.border.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class Menu extends JFrame
 {
+    private final static Logger log = null;
+
     public Menu()
     {
         UI();
@@ -174,7 +178,7 @@ public class Menu extends JFrame
         }
         catch(Exception e)
         {
-            System.out.println("Team Taco Rules!");
+            log.log(Level.SEVERE, "Error 1", e);
         }
 
 

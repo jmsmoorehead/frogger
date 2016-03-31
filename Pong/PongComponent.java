@@ -1,12 +1,15 @@
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class PongComponent extends JComponent implements KeyListener, Runnable
 {
 	private PongEnvironment environment;
 	private boolean pressingUp = false;
 	private boolean pressingDown = false;
+	private final static Logger log = null;
 
 	public PongComponent()
 	{
@@ -30,7 +33,7 @@ public class PongComponent extends JComponent implements KeyListener, Runnable
 			}
 			catch(Exception ex)
 			{
-				System.out.println("Team Taco Rules!");
+				log.log(Level.SEVERE, "Error 1", ex);
 			}
 			requestFocus();
 			update();
