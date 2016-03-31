@@ -49,6 +49,7 @@ public class TrafficPattern
 					break;
 				default:
 					cars.add(new Car(left?next*Car.WIDTH:(int)bounds.getWidth()-next*Car.WIDTH, y, speed, null));
+					break;
 			}
 		}
 	}
