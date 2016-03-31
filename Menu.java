@@ -174,7 +174,7 @@ public class Menu extends JFrame
         }
         catch(Exception e)
         {
-            e.printStackTrace();
+            System.out.println("Team Taco Rules!");
         }
 
 

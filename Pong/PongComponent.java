@@ -30,7 +30,7 @@ public class PongComponent extends JComponent implements KeyListener, Runnable
 			}
 			catch(Exception ex)
 			{
-				ex.printStackTrace();
+				System.out.println("Team Taco Rules!");
 			}
 			requestFocus();
 			update();
