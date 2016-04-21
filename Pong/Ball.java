@@ -8,7 +8,7 @@ public class Ball
 	private int dx, dy;
 	private Color color;
 	private int speed;
-	private int speedUpDelay = 25;
+	private int speedUpDelay = 35;
 	private int delay = 0;
 
 	public Ball(Color c, int x, int y)
@@ -18,16 +18,16 @@ public class Ball
 		this.y = y;
 		dx = (Math.random() < .5)?1:-1;
 		dy = (Math.random() < .5)?1:-1;
-		speed = 4;
+		speed = 9;
 	}
 
 	public void move()
 	{
 		delay = (delay+1)%speedUpDelay;
 		if(delay == 0)
-			speed++;
-		x+=(int)(getUnitDX()*speed);
-		y+=(int)(getUnitDY()*speed);
+			if(speed++>45)speed=45;
+		x+=(int)(getUnitDX()*speed/1.5);
+		y+=(int)(getUnitDY()*speed/1.5);
 	}
 
 	public Point getLocation()
