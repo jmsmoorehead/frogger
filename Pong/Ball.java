@@ -45,12 +45,17 @@ public class Ball
 		return ((double)dy/(double)(Math.sqrt(dx*dx + dy*dy)));
 	}
 
-	public void bounceSide()
+	public void bounceSide(Paddle paddle)
 	{
 		dx = -dx;
 		dy = (int)(Math.random()*8)-4;
-		move();
-		move();
+
+		if(dx > 0) { // if the ball is now moving to the right (hit the left paddle)
+			x = paddle.getX() + Paddle.WIDTH + Ball.RADIUS;
+		}
+		else { // hit the right paddle
+			x = paddle.getX() - Ball.RADIUS*2;
+		}
 	}
 
 	public void bounceTop()
