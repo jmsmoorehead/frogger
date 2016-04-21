@@ -28,7 +28,7 @@ public class DrawingClass extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new GridLayout(11,7));
 	    setBackground(Color.WHITE);
-		setVisible(true);
+		setVisible(false);
 		setResizable(false);
 	}
 	
