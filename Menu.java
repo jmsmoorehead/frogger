@@ -172,14 +172,14 @@ public class Menu extends JFrame
 
 
         //Make it look prettier.
-        try
+        /*try
         {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         }
         catch(Exception e)
         {
             log.log(Level.SEVERE, "Error 1", e);
-        }
+        }*/
 
 
     }
