@@ -15,7 +15,7 @@ public class FroggerComponent extends JComponent implements KeyListener, Runnabl
 		super();
 		levelInit();
 		engine = new FroggerLevelEngine(levels.get(level));
- 		setPreferredSize(new Dimension(engine.WIDTH, engine.HEIGHT));
+ 		setPreferredSize(new Dimension(engine.WIDTH,engine.HEIGHT));
 
  		addKeyListener(this);
  		Thread run = new Thread(this);
@@ -120,9 +120,7 @@ public class FroggerComponent extends JComponent implements KeyListener, Runnabl
 			leftPressed = true;
 		else if(ke.getKeyCode() == KeyEvent.VK_RIGHT)
 			rightPressed = true;
-		else if(ke.getKeyCode() == KeyEvent.VK_SPACE)
-		{
-			if(engine.getState() == FroggerState.HIT)
+		else if(ke.getKeyCode() == KeyEvent.VK_SPACE && engine.getState() == FroggerState.HIT)
 				engine = new FroggerLevelEngine(levels.get(level));
 		}
 	}

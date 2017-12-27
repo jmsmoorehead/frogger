@@ -2,8 +2,8 @@ import java.awt.*;
 
 public class FroggerLevelEngine
 {
-	public static final int WIDTH = 250;
-	public static final int HEIGHT = 250;
+	public static final int WIDTH = 550;
+	public static final int HEIGHT = 350;
 
 	private TrafficPattern[] traffic;
 	private Frog frog;

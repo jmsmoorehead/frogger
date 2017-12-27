@@ -49,6 +49,7 @@ public class TrafficPattern
 					break;
 				default:
 					cars.add(new Car(left?next*Car.WIDTH:(int)bounds.getWidth()-next*Car.WIDTH, y, speed, null));
+					break;
 			}
 		}
 	}
@@ -108,12 +109,15 @@ public class TrafficPattern
 
 	public boolean intersects(Frog f)
 	{
+		boolean doesIntersect = false;
 		for(int i = 0; i < cars.size(); i++)
 		{
-			if((cars.get(i) != null) && !cars.get(i).empty() && cars.get(i).intersects(f.getBounds()))
-				return true;
+			if(cars.get(i) != null && !cars.get(i).empty() && cars.get(i).intersects(f.getBounds())) {
+				doesIntersect = true;
+				break;
+			}
 		}
-		return false;
+		return doesIntersect;
 	}
 
 	public void draw(Graphics g)

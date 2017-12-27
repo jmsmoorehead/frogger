@@ -2,7 +2,7 @@ import java.awt.*;
 
 public class PongEnvironment
 {
-	public static final int WIDTH = 400;
+	public static final int WIDTH = 450;
 	public static final int HEIGHT = 300;
 
 	private Ball ball;

@@ -1,19 +1,22 @@
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class PongComponent extends JComponent implements KeyListener, Runnable
 {
 	private PongEnvironment environment;
 	private boolean pressingUp = false;
 	private boolean pressingDown = false;
+	private final static Logger log = null;
 
 	public PongComponent()
 	{
 		super();
 		environment = new PongEnvironment();
 		environment.setComputer(false, true);
- 		setPreferredSize(new Dimension(environment.WIDTH, environment.HEIGHT));
+ 		setPreferredSize(new Dimension(PongEnvironment.WIDTH, PongEnvironment.HEIGHT));
 
  		addKeyListener(this);
  		Thread run = new Thread(this);
@@ -30,6 +33,7 @@ public class PongComponent extends JComponent implements KeyListener, Runnable
 			}
 			catch(Exception ex)
 			{
+				log.log(Level.SEVERE, "Error 1", ex);
 			}
 			requestFocus();
 			update();

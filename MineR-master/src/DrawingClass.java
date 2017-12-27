@@ -13,16 +13,21 @@ public class DrawingClass extends JFrame{
 	
 	private static final long serialVersionUID = 1L;
 	private JButton Clicks[] = new JButton[100];
-	private JLabel JL = new JLabel();
-	private int Checks[] = new int[100],clk=0,add[] = {-11,-10,-9,-1,1,9,10,11},total=0;
+	private JLabel labelClicks = new JLabel();
+	private int Checks[] = new int[100],clk,add[] = {-11,-10,-9,-1,1,9,10,11},total;
 	private Boolean Checked[] = new Boolean[100];
+	
+	public JButton[] getClicks()
+	{
+		return Clicks;
+	}
+	
 	public DrawingClass()
 	{
 		super("MineR");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new GridLayout(11,7));
 	    setBackground(Color.WHITE);
-		setVisible(true);
+		setVisible(false);
 		setResizable(false);
 	}
 	
@@ -30,11 +35,11 @@ public class DrawingClass extends JFrame{
 	{
 		for (int i=0;i<100;i++)
 		{
-			if (Checks[i]==9 && Checked[i].booleanValue()==true)
+			if (Checks[i]==9 && Checked[i].booleanValue())
 			{
 				Clicks[i].setText("*");
 			}
-			else if((Checks[i]>=0 && Checks[i]<=8) && Checked[i].booleanValue()==true)
+			else if(Checks[i]>=0 && Checks[i]<=8 && Checked[i].booleanValue())
 			{
 				Clicks[i].setText(String.valueOf(Checks[i]));
 			}
@@ -47,7 +52,7 @@ public class DrawingClass extends JFrame{
 			for(int i=0;i<100;i++)
 			{
 				
-				if((Checks[i]>=0 && Checks[i]<=8) && Checked[i].booleanValue()==true)
+				if((Checks[i]>=0 && Checks[i]<=8) && Checked[i].booleanValue())
 				{
 					Count++;
 				}
@@ -82,7 +87,7 @@ public class DrawingClass extends JFrame{
 			Checked[i] = false;
 			super.add(Clicks[i]);
 	    }
-		add(JL);
+		add(labelClicks);
 		super.setSize(600,600);
 	}
 	
@@ -110,7 +115,7 @@ public class DrawingClass extends JFrame{
 	{
 	  clk=0;
 	  total=0;
-	  JL.setText("");
+	  labelClicks.setText("");
 	  for(int i=0;i<100;i++)
 	  {
 		  remove(Clicks[i]);
@@ -127,7 +132,7 @@ public class DrawingClass extends JFrame{
 			Clicks[Integer.parseInt(j.getName())].setEnabled(false);
 			Checked[Integer.parseInt(j.getName())] = true;
 			clk++;
-			JL.setText(String.format("%d",clk));
+			labelClicks.setText(String.format("%d",clk));
 			if(Checks[Integer.parseInt(j.getName())]==9)
 			 {
 				 findBomb();
@@ -152,7 +157,7 @@ public class DrawingClass extends JFrame{
 			{
 				try{
 				Checks[pos+add[i]]=Calculate(pos+add[i]);
-				if(Checks[pos+add[i]]==0 && Checked[pos+add[i]]==false)
+				if(Checks[pos+add[i]]==0 && !Checked[pos+add[i]])
 				{
 					Clicks[pos+add[i]].setEnabled(false);
 					Checked[pos+add[i]]=true;
