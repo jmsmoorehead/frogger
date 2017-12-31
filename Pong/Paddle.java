@@ -14,13 +14,6 @@ public class Paddle
 		this.y = y;
 	}
 
-	public int getX(){
-		return this.x;
-	}
-	public int getY(){
-		return this.y;
-	}
-
 	public void moveTo(int y)
 	{
 		if(Math.abs(this.y-y) > MAX_SPEED)

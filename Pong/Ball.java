@@ -15,7 +15,7 @@ public class Ball
 	{
 		color = c;
 		this.x = x;
-		this.y = y;e
+		this.y = y;
 		dx = (Math.random() < .5)?1:-1;
 		dy = (Math.random() < .5)?1:-1;
 		speed = 4;
@@ -45,17 +45,12 @@ public class Ball
 		return ((double)dy/(double)(Math.sqrt(dx*dx + dy*dy)));
 	}
 
-	public void bounceSide(Paddle paddle)
+	public void bounceSide()
 	{
 		dx = -dx;
 		dy = (int)(Math.random()*8)-4;
-
-		if(dx > 0) { // if the ball is now moving to the right (hit the left paddle)
-			x = paddle.getX() + Paddle.WIDTH + Ball.RADIUS;
-		}
-		else { // hit the right paddle
-			x = paddle.getX() - Ball.RADIUS*2;
-		}
+		move();
+		move();
 	}
 
 	public void bounceTop()
