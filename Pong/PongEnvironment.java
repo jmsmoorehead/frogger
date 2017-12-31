@@ -75,9 +75,9 @@ public class PongEnvironment
 		else if(ball.getLocation().getY() + Ball.RADIUS >= HEIGHT)
 			ball.bounceTop();
 		else if(left.contains(ball))
-			ball.bounceSide();
+			ball.bounceSide(left);
 		else if(right.contains(ball))
-			ball.bounceSide();
+			ball.bounceSide(right);
 		else if(ball.getLocation().getX() < 0)
 			rightScore();
 		else if(ball.getLocation().getX() > WIDTH)
